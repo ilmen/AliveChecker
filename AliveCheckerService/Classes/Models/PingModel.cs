@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AliveCheckerService.Classes
+namespace AliveCheckerService.Classes.Models
 {
     public class PingModel
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AliveCheckerService.Classes.Models;
+using System;
 namespace AliveCheckerService.Classes.PingSevices
 {
     public interface IPingService

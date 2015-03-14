@@ -1,4 +1,5 @@
 ﻿using AliveCheckerService.Classes;
+using AliveCheckerService.Classes.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

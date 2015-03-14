@@ -1,11 +1,12 @@
-﻿using System;
+﻿using AliveCheckerService.Classes.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace AliveCheckerService.Classes
+namespace AliveCheckerService.Classes.ViewModels
 {
     public class PingViewModel : ViewModelBase
     {
@@ -52,6 +53,8 @@ namespace AliveCheckerService.Classes
 
                 model.LastPingTime = value;
                 RaisePropertyChange("LastPingTime");
+                RaisePropertyChange("PingDelay");
+                RaisePropertyChange("IsOffline");
             }
         }
 
@@ -60,6 +63,14 @@ namespace AliveCheckerService.Classes
             get
             {
                 return DateTime.Now - LastPingTime;
+            }
+        }
+
+        public bool IsOffline
+        {
+            get
+            {
+                return PingDelay >= TimeSpan.FromMinutes(5);
             }
         }
 
@@ -73,6 +84,7 @@ namespace AliveCheckerService.Classes
             timer.Tick += (s, e) =>
             {
                 RaisePropertyChange("PingDelay");
+                RaisePropertyChange("IsOffline");
             };
         }
     }

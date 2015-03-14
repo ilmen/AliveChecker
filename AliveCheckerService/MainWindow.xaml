@@ -5,20 +5,8 @@
         Name="rootLayout"
         Title="MainWindow" Height="300" Width="300">
     <Window.Resources>
-        <Style x:Key="ZIndex1" TargetType="FrameworkElement">
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect ShadowDepth="0" Opacity="0.6" BlurRadius="15"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="ZIndex2" TargetType="FrameworkElement">
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect ShadowDepth="0" Opacity="0.6" BlurRadius="20"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <DropShadowEffect x:Key="EffectZIndex1" ShadowDepth="0" Opacity="0.4" BlurRadius="10"/>
+        <DropShadowEffect x:Key="EffectZIndex2" ShadowDepth="0" Opacity="0.6" BlurRadius="20"/>
     </Window.Resources>
     <Grid>
         <Grid>
@@ -47,6 +35,15 @@
                             HorizontalAlignment="Stretch"
                             Background="White"
                             Padding="40 10 0 10">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsOffline}" Value="True">
+                                            <Setter Property="Effect" Value="{StaticResource EffectZIndex1}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
@@ -57,7 +54,17 @@
                                     Grid.Row="0"
                                     HorizontalAlignment="Left"
                                     FontSize="14"
-                                    Text="{Binding Name}"/>
+                                    Text="{Binding Name}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsOffline}" Value="True">
+                                                    <Setter Property="Foreground" Value="Red" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
                                 <TextBlock
                                     Grid.Row="1"
                                     FontSize="10"

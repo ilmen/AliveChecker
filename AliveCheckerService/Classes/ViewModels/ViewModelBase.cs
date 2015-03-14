@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace AliveCheckerService.Classes
+namespace AliveCheckerService.Classes.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
