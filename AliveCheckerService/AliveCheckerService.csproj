@@ -51,7 +51,8 @@
   <ItemGroup>
     <Compile Include="Classes\DelegateCommand.cs" />
     <Compile Include="Classes\MainWindowViewModel.cs" />
-    <Compile Include="Classes\PingModelView.cs" />
+    <Compile Include="Classes\PingModel.cs" />
+    <Compile Include="Classes\PingViewModel.cs" />
     <Compile Include="Classes\ViewModelBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Service.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AliveCheckerService.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,7 +10,7 @@ namespace AliveCheckerService
 {
     public class Service : IDisposable
     {
-        public static Dictionary<Guid, DateTime> LastPings = new Dictionary<Guid, DateTime>();
+        public static List<PingModel> Pings = new List<PingModel>();
         
         public static event EventHandler LastPingsChanged = delegate { };
 
@@ -37,9 +38,24 @@ namespace AliveCheckerService
                 Guid uid;
                 if (Guid.TryParse(uidString, out uid))
                 {
-                    LastPings[uid] = DateTime.Now;
-                    LastPingsChanged(this, null);
                     result = true;
+
+                    var item = Pings.FirstOrDefault(x => x.Uid == uid);
+                    if (item != null)
+                    {
+                        item.LastPingTime = DateTime.Now;
+                    }
+                    else
+                    {
+                        item = new PingModel()
+                        {
+                            Name = "DeviceName",
+                            Uid = uid,
+                            LastPingTime = DateTime.Now,
+                        };
+                        Pings.Add(item);
+                    }
+                    LastPingsChanged(this, null);
                 }
             }
 
