@@ -19,6 +19,8 @@ namespace AliveCheckerService.Classes
             }
             set
             {
+                if (model != null && model.Name.Equals(value)) return;
+
                 model.Name = value;
                 RaisePropertyChange("Name");
             }
@@ -46,8 +48,9 @@ namespace AliveCheckerService.Classes
             }
             set
             {
-                model.LastPingTime = value;
+                if (model != null && model.LastPingTime.Equals(value)) return;
 
+                model.LastPingTime = value;
                 RaisePropertyChange("LastPingTime");
             }
         }
