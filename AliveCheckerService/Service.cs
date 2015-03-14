@@ -9,7 +9,9 @@ namespace AliveCheckerService
 {
     public class Service : IDisposable
     {
-        static Dictionary<Guid, DateTime> lastPing = new Dictionary<Guid, DateTime>();
+        public static Dictionary<Guid, DateTime> LastPings = new Dictionary<Guid, DateTime>();
+        
+        public static event EventHandler LastPingsChanged = delegate { };
 
         HttpListener listener = new HttpListener();
 
@@ -35,7 +37,8 @@ namespace AliveCheckerService
                 Guid uid;
                 if (Guid.TryParse(uidString, out uid))
                 {
-                    lastPing[uid] = DateTime.Now;
+                    LastPings[uid] = DateTime.Now;
+                    LastPingsChanged(this, null);
                     result = true;
                 }
             }

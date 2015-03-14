@@ -23,9 +23,6 @@ namespace AliveCheckerService
         public MainWindow()
         {
             InitializeComponent();
-
-            // TODO: remove
-            var service = new Service();
         }
     }
 }
