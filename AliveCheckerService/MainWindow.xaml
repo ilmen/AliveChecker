@@ -4,6 +4,22 @@
         xmlns:classes="clr-namespace:AliveCheckerService.Classes"
         Name="rootLayout"
         Title="MainWindow" Height="300" Width="300">
+    <Window.Resources>
+        <Style x:Key="ZIndex1" TargetType="FrameworkElement">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="0" Opacity="0.6" BlurRadius="15"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ZIndex2" TargetType="FrameworkElement">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="0" Opacity="0.6" BlurRadius="20"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -24,32 +40,41 @@
             <ListView 
                 Grid.Row="1"
                 ItemsSource="{Binding Pings}"
-                Padding="40 20 0 0">
+                Padding="0 20 0 0">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="classes:PingModelView">
-                        <Grid
+                        <Border
                             HorizontalAlignment="Stretch"
-                            Margin="0 10 0 0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
+                            Background="White"
+                            Padding="40 10 0 10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
 
-                            <TextBlock
-                                Grid.Row="0"
-                                HorizontalAlignment="Left"
-                                FontSize="14"
-                                Text="{Binding Name}"/>
-                            <TextBlock
-                                Grid.Row="1"
-                                FontSize="10"
-                                Foreground="Gray"
-                                Padding="20 0 0 0"
-                                Text="{Binding PingDelay}" />
-                        </Grid>
+                                <TextBlock
+                                    Grid.Row="0"
+                                    HorizontalAlignment="Left"
+                                    FontSize="14"
+                                    Text="{Binding Name}"/>
+                                <TextBlock
+                                    Grid.Row="1"
+                                    FontSize="10"
+                                    Foreground="Gray"
+                                    Padding="20 0 0 0"
+                                    Text="{Binding PingDelay}" />
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                </ListView>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Margin" Value="5 0 5 0" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
         </Grid>
         <Button
             Height="40" Width="40"
