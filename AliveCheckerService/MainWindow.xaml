@@ -11,9 +11,9 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-            <RowDefinition Height="80" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
             <Border
                 Grid.Row="0"
                 Background="#03a9f4">
@@ -34,7 +34,8 @@
                         <Border
                             HorizontalAlignment="Stretch"
                             Background="White"
-                            Padding="40 10 0 10">
+                            Padding="40 5 0 5"
+                            Margin="0 5 0 5">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Style.Triggers>
@@ -89,7 +90,40 @@
             VerticalAlignment="Top"
             Margin="0 60 30 0"
             Command="{Binding HideCommand}"
-            CommandParameter="{Binding ElementName=rootLayout}">
+            CommandParameter="{Binding ElementName=rootLayout}" Style="{DynamicResource ButtonStyle}">
+            <Button.Resources>
+                <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Grid>
+                                    <Ellipse x:Name="ButtonEllipse"
+                                        Width="40" Height="40"
+                                        Fill="White"
+                                        Effect="{StaticResource EffectZIndex1}"/>
+                                    <Path x:Name="ButtonPath"
+                                        Stroke="Gray"
+                                        StrokeStartLineCap="Round"
+                                        StrokeEndLineCap="Round">
+                                        <Path.Data>
+                                            <GeometryGroup>
+                                                <LineGeometry StartPoint="15 20" EndPoint="20 25" />
+                                                <LineGeometry StartPoint="20 25" EndPoint="25 20" />
+                                            </GeometryGroup>
+                                        </Path.Data>
+                                    </Path>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Effect" TargetName="ButtonEllipse" Value="{StaticResource EffectZIndex2}"/>
+                                        <Setter Property="Stroke" TargetName="ButtonPath" Value="Black"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Resources>
         </Button>
     </Grid>
 </Window>
