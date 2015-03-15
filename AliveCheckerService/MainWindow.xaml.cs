@@ -24,5 +24,11 @@ namespace AliveCheckerService
         {
             InitializeComponent();
         }
+
+        private void rootLayout_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
     }
 }

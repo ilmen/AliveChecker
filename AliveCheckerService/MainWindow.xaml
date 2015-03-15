@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:classes="clr-namespace:AliveCheckerService.Classes"
         Name="rootLayout"
-        Title="MainWindow" Height="300" Width="300">
+        Title="MainWindow" Height="300" Width="300" Closing="rootLayout_Closing">
     <Window.Resources>
         <DropShadowEffect x:Key="EffectZIndex1" ShadowDepth="0" Opacity="0.4" BlurRadius="10"/>
         <DropShadowEffect x:Key="EffectZIndex2" ShadowDepth="0" Opacity="0.6" BlurRadius="20"/>
