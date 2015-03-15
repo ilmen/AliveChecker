@@ -118,6 +118,10 @@
                                         <Setter Property="Effect" TargetName="ButtonEllipse" Value="{StaticResource EffectZIndex2}"/>
                                         <Setter Property="Stroke" TargetName="ButtonPath" Value="Black"/>
                                     </Trigger>
+                                    <Trigger Property="IsEnabled" Value="false">
+                                        <Setter Property="Effect" TargetName="ButtonEllipse" Value="{x:Null}"/>
+                                        <Setter Property="Visibility" TargetName="ButtonPath" Value="Hidden" />
+                                    </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>

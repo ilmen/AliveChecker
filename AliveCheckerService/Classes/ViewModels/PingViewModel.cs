@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Threading;
 
 namespace AliveCheckerService.Classes.ViewModels
@@ -79,9 +80,9 @@ namespace AliveCheckerService.Classes.ViewModels
             this.model = model;
         }
 
-        public PingViewModel(PingModel model, DispatcherTimer timer) : this(model)
+        public PingViewModel(PingModel model, Timer timer) : this(model)
         {
-            timer.Tick += (s, e) =>
+            timer.Elapsed += (s, e) =>
             {
                 RaisePropertyChange("PingDelay");
                 RaisePropertyChange("IsOffline");
