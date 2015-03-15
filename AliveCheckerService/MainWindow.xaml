@@ -70,8 +70,15 @@
                                     Grid.Row="1"
                                     FontSize="10"
                                     Foreground="Gray"
-                                    Padding="20 0 0 0"
-                                    Text="{Binding PingDelay}" />
+                                    Padding="20 0 0 0">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0:00}:{1:00}:{2:00}">
+                                            <Binding Path="PingDelay.Hours" />
+                                            <Binding Path="PingDelay.Minutes" />
+                                            <Binding Path="PingDelay.Seconds" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
                             </Grid>
                         </Border>
                     </DataTemplate>
