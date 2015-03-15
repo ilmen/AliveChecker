@@ -22,7 +22,7 @@ namespace AliveCheckerService.Classes.PingSevices
 
         private void InitializeServices()
         {
-            var httpService = new HttpService();
+            var httpService = new HttpService(Program.HttpServicePrefix);
             httpService.NewPing += ResendNewPingHandler;
         }
 

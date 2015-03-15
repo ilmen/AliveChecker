@@ -15,9 +15,9 @@ namespace AliveCheckerService.Classes.PingSevices
 
         HttpListener listener = new HttpListener();
 
-        public HttpService()
+        public HttpService(string HttpPrefix = "http://+:8888/")
         {
-            listener.Prefixes.Add("http://localhost:5555/");
+            listener.Prefixes.Add(HttpPrefix);
             listener.Start();
 
             GetContext();
