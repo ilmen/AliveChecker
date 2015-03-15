@@ -52,7 +52,7 @@ namespace AliveCheckerService.Classes.ViewModels
 
             Pings = new ObservableCollection<PingViewModel>();
 
-            AddFakePings(tmrUpdatePVM);
+            //AddFakePings(tmrUpdatePVM);
 
             tmrUpdatePVM.Elapsed += (s, e) =>
                 {
@@ -77,26 +77,25 @@ namespace AliveCheckerService.Classes.ViewModels
             }));
         }
 
-        // TODO: remove fake pingViewModels
-        void AddFakePings(Timer tmr)
-        {
-            var item1 = new PingModel()
-            {
-                Name = "LG P500",
-                Uid = Guid.NewGuid(),
-                LastPingTime = DateTime.Now.AddMinutes(-5).AddSeconds(10),
-            };
+        //void AddFakePings(Timer tmr)
+        //{
+        //    var item1 = new PingModel()
+        //    {
+        //        Name = "LG P500",
+        //        Uid = Guid.NewGuid(),
+        //        LastPingTime = DateTime.Now.AddMinutes(-5).AddSeconds(10),
+        //    };
 
-            Pings.Add(new PingViewModel(item1, tmr));
+        //    Pings.Add(new PingViewModel(item1, tmr));
 
-            var item2 = new PingModel()
-            {
-                Name = "Azure Collection Statictic Server",
-                Uid = Guid.NewGuid(),
-                LastPingTime = DateTime.Now,
-            };
+        //    var item2 = new PingModel()
+        //    {
+        //        Name = "Azure Collection Statictic Server",
+        //        Uid = Guid.NewGuid(),
+        //        LastPingTime = DateTime.Now,
+        //    };
 
-            Pings.Add(new PingViewModel(item2, tmr));
-        }
+        //    Pings.Add(new PingViewModel(item2, tmr));
+        //}
     }
 }
