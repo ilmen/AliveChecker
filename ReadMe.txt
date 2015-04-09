@@ -1,0 +1,1 @@
+http://localhost:8888/?uid={20F61704-04F2-48D1-87C2-EA71333D9CA9}&name=MyDevice

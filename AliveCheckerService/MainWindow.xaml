@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:classes="clr-namespace:AliveCheckerService.Classes"
         Name="rootLayout"
-        Title="MainWindow" Height="300" Width="300" Closing="rootLayout_Closing">
+        Title="MainWindow" Height="300" Width="300"
+        Closing="rootLayout_Closing">
     <Window.Resources>
-        <DropShadowEffect x:Key="EffectZIndex1" ShadowDepth="0" Opacity="0.4" BlurRadius="10"/>
-        <DropShadowEffect x:Key="EffectZIndex2" ShadowDepth="0" Opacity="0.6" BlurRadius="20"/>
+        <DropShadowEffect x:Key="EffectZIndex1" ShadowDepth="0" Opacity="0.4" BlurRadius="7"/>
+        <DropShadowEffect x:Key="EffectZIndex2" ShadowDepth="0" Opacity="0.6" BlurRadius="12"/>
     </Window.Resources>
     <Grid>
         <Grid>
@@ -108,8 +109,19 @@
                                         Width="40" Height="40"
                                         Fill="White"
                                         Effect="{StaticResource EffectZIndex1}"/>
-                                    <Path x:Name="ButtonPath"
+                                    <!--<Path x:Name="ButtonPath"
                                         Stroke="Gray"
+                                        StrokeStartLineCap="Round"
+                                        StrokeEndLineCap="Round">
+                                        <Path.Data>
+                                            <GeometryGroup>
+                                                <LineGeometry StartPoint="15 20" EndPoint="20 25" />
+                                                <LineGeometry StartPoint="20 25" EndPoint="25 20" />
+                                            </GeometryGroup>
+                                        </Path.Data>
+                                    </Path>-->
+                                    <Path x:Name="ButtonPath"
+                                        Stroke="Black"
                                         StrokeStartLineCap="Round"
                                         StrokeEndLineCap="Round">
                                         <Path.Data>
@@ -123,7 +135,7 @@
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
                                         <Setter Property="Effect" TargetName="ButtonEllipse" Value="{StaticResource EffectZIndex2}"/>
-                                        <Setter Property="Stroke" TargetName="ButtonPath" Value="Black"/>
+                                        <!--<Setter Property="Stroke" TargetName="ButtonPath" Value="Black"/>-->
                                     </Trigger>
                                     <Trigger Property="IsEnabled" Value="false">
                                         <Setter Property="Effect" TargetName="ButtonEllipse" Value="{x:Null}"/>
